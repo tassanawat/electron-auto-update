@@ -1,0 +1,51 @@
+{
+  "name": "electron-auto-update-simple",
+  "version": "0.0.1",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "publish": "build -p always",
+    "run-server": "http-server dist -p 8080",
+    "sign-dev-electron-app": "codesign --deep --force --verbose --sign - node_modules/electron/dist/Electron.app"
+  },
+  "repository": "https://github.com/Peelz/electron-auto-update",
+  "keywords": [
+    "Electron",
+    "quick",
+    "start",
+    "tutorial",
+    "demo"
+  ],
+  "author": "Peelz",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^4.0.4",
+    "electron-builder": "^20.38.5",
+    "electron-prebuilt-compile": "^4.0.0",
+    "http-server": "^0.11.1"
+  },
+  "dependencies": {
+    "electron-log": "^3.0.1",
+    "electron-updater": "^4.0.6",
+    "tls-check": "^0.2.0"
+  },
+  "build": {
+    "publish": [
+      {
+        "provider": "generic",
+        "url": "http://127.0.0.1:8080/"
+      }
+    ],
+    "appId": "com.github.peelz.electron-auto-update",
+    "mac": {
+      "target": [
+        "zip",
+        "dmg"
+      ]
+    },
+    "nsis": {
+      "perMachine": true
+    }
+  }
+}
