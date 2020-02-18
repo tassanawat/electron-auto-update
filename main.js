@@ -15,6 +15,14 @@ autoUpdater.logger = log;
 autoUpdater.logger.transports.file.level = 'info';
 log.info('App starting...');
 
+const isDev = require('electron-is-dev');
+
+if (isDev) {
+    console.log('Running in development');
+} else {
+    console.log('Running in production');
+}
+
 //-------------------------------------------------------------------
 // Define the menu
 //
